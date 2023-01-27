@@ -35,11 +35,13 @@ const Home: NextPage = () => {
       });
       const totalDeposits = depositTally.toString();
       const totalDepositsFormatted =
-        totalDeposits.substring(0, totalDeposits.length - decimals) + "." + totalDeposits.substring(0, totalDeposits.length - decimals - 2);
+        totalDeposits === "0"
+          ? "0"
+          : totalDeposits.substring(0, totalDeposits.length - decimals) + "." + totalDeposits.substring(0, totalDeposits.length - decimals - 2);
       setDeposits(totalDepositsFormatted);
     }
     load();
-  }, []);
+  }, [address]);
 
   return (
     <div className="container">
