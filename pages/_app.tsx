@@ -1,27 +1,28 @@
-import '../styles/globals.css';
-import '@rainbow-me/rainbowkit/styles.css';
-import type { AppProps } from 'next/app';
-import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+import "../styles/globals.css";
+import "@rainbow-me/rainbowkit/styles.css";
+import type { AppProps } from "next/app";
+import { RainbowKitProvider, getDefaultWallets } from "@rainbow-me/rainbowkit";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
 
-const { chains, provider, webSocketProvider } = configureChains(
-  [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
-  ],
-  [
-    publicProvider(),
-  ]
-);
+import { Chain } from "@rainbow-me/rainbowkit";
+
+export const moonriver: Chain = {
+  id: 1285,
+  rpcUrls: {
+    default: { http: ["https://moonriver.public.blastapi.io"] },
+  },
+  name: "Moonriver",
+  network: "moonriver",
+  nativeCurrency: { decimals: 18, name: "Moonriver", symbol: "MOVR" },
+  iconUrl: "./moonriver.webp",
+};
+
+import { publicProvider } from "wagmi/providers/public";
+
+const { chains, provider, webSocketProvider } = configureChains([moonriver], [publicProvider()]);
 
 const { connectors } = getDefaultWallets({
-  appName: 'RainbowKit App',
+  appName: "RainbowKit App",
   chains,
 });
 
@@ -35,7 +36,7 @@ const wagmiClient = createClient({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider chains={chains}  modalSize="compact">
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiConfig>
