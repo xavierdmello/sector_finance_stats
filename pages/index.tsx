@@ -38,6 +38,7 @@ const Home: NextPage = () => {
         totalDeposits === "0"
           ? "0"
           : totalDeposits.substring(0, totalDeposits.length - decimals) + "." + totalDeposits.substring(0, totalDeposits.length - decimals - 2);
+          
       setDeposits(totalDepositsFormatted);
     }
     load();
