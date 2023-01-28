@@ -13,12 +13,11 @@ const decimals = 6;
 const depositTopic = "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c";
 const withdrawTopic = "0x884edad9ce6fa2440d8a54cc123490eb96d2768479d49ff9c7366125a9424364";
 
-
 function Stats({ address }: { address: `0x${string}` }): JSX.Element {
   const [netDeposits, setNetDeposits] = useState("???");
   const [pl, setPl] = useState("???");
   const [balance, setBalance] = useState("???");
-console.log(address)
+
   let {
     data: rawBalance,
     isError,
@@ -98,7 +97,7 @@ console.log(address)
     } else {
       setNetDeposits("???");
       setPl("???");
-      setBalance("???")
+      setBalance("???");
     }
   }, [address]);
 
