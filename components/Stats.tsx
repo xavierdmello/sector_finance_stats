@@ -5,6 +5,8 @@ import { useAccount, useContractRead } from "wagmi";
 import styles from "../styles/Stats.module.css";
 import { BigNumber, BytesLike, ethers } from "ethers";
 import Vault from "../abi/Vault";
+import PLPercentage from "./PLPercentage";
+
 const moonscanKey = "F86IKT3Z84MNJENUW4RJRMMZIP2CRKXIF2";
 const vault = "0xc24D43093b44b7A9657571DDB79FEdf014eaef7d";
 const decimals = 6;
@@ -102,10 +104,14 @@ function Stats() {
       <h1>Current Balance: {balance} USDC</h1>
       <div className={styles.row}>
         <h1>Net Deposits: {netDeposits} USDC</h1>
-        <p className={styles.formula}>(Total Deposists - Total Withdrawals)</p>
+        <p className={styles.formula}>(Total Deposits - Total Withdrawals)</p>
       </div>
 
-      <h1>P/L: {pl} USDC</h1>
+      <div className={styles.row}>
+        <h1 className={styles.pl}>P/L: {pl} USDC</h1>
+        <PLPercentage balance={balance} netDeposits={netDeposits} />
+      </div>
+
       <center>
         <a href="https://github.com/xavierdmello/sector_finance_stats">Github</a>
         <p>
