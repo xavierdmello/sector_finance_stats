@@ -14,6 +14,13 @@ const Home: NextPage = () => {
   const { address: buttonAddress } = useAccount();
 
   useEffect(() => {
+    const localInputBoxAddress = localStorage.getItem("inputBoxAddress");
+    if (localInputBoxAddress) {
+      setInputBoxAddress(localInputBoxAddress);
+    }
+  }, []);
+
+  useEffect(() => {
     let selectedAddressTemp: `0x${string}` = ethers.constants.AddressZero;
     let validAddressTemp = ethers.utils.isAddress(inputBoxAddress);
     if (selectionMethod === "button" && buttonAddress) {
@@ -21,6 +28,7 @@ const Home: NextPage = () => {
     } else if (selectionMethod === "input") {
       if (validAddressTemp) {
         selectedAddressTemp = inputBoxAddress as `0x${string}`;
+        localStorage.setItem("inputBoxAddress", selectedAddressTemp);
       }
     }
     setValidAddress(validAddressTemp);
@@ -40,7 +48,7 @@ const Home: NextPage = () => {
       </div>
       <div className={styles.row} id={styles.inputRow}>
         {selectionMethod === "button" && <ConnectButton />}
-        {selectionMethod === "input" && <input type="text" onChange={(event) => setInputBoxAddress(event.target.value)} value={inputBoxAddress}></input>}
+        {selectionMethod === "input" && <input type="text" className={styles.addressInputBox} onChange={(event) => setInputBoxAddress(event.target.value)} value={inputBoxAddress}></input>}
         {selectionMethod === "input" && !validAddress && inputBoxAddress && <p className={styles.error}>Error: Invalid Address</p>}
       </div>
       <Stats address={selectedAddress} />

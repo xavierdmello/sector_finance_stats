@@ -24,10 +24,15 @@
 .error {
   color: red;
   position: absolute;
-  left: 180px;
+  left: 365px;
   white-space: nowrap;
 }
 
 #inputRow {
   position: relative;
+}
+
+.addressInputBox {
+  width: 360px;
+  text-align: center; 
 }
