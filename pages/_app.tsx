@@ -3,7 +3,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 import type { AppProps } from "next/app";
 import { RainbowKitProvider, getDefaultWallets } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-
+import { Analytics } from "@vercel/analytics/react";
 import { Chain } from "@rainbow-me/rainbowkit";
 
 export const moonriver: Chain = {
@@ -36,8 +36,9 @@ const wagmiClient = createClient({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}  modalSize="compact">
+      <RainbowKitProvider chains={chains} modalSize="compact">
         <Component {...pageProps} />
+        <Analytics />
       </RainbowKitProvider>
     </WagmiConfig>
   );
