@@ -6,7 +6,7 @@ interface Props {
 }
 export default function PLPercentage({ balance, netDeposits }: Props) {
   if (balance === "???" || netDeposits === "???") {
-    return <h1>???</h1>;
+    return <h1>+???%</h1>;
   }
   const change = ((parseFloat(balance) - parseFloat(netDeposits)) / parseFloat(netDeposits)) * 100;
   const roundedChange = change.toFixed(2);
