@@ -112,7 +112,7 @@ function Stats() {
           Data provided by <a href="https://moonriver.moonscan.io/">Moonriver Moonscan</a>
         </p>
         <p>
-           2023 Xavier D'Mello <a href="https://twitter.com/nova_holo">@nova_holo</a>
+          &copy; 2023 Xavier D'Mello <a href="https://twitter.com/nova_holo">@nova_holo</a>
         </p>
       </center>
     </div>
