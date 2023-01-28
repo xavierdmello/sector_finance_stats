@@ -13,14 +13,12 @@ const decimals = 6;
 const depositTopic = "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c";
 const withdrawTopic = "0x884edad9ce6fa2440d8a54cc123490eb96d2768479d49ff9c7366125a9424364";
 
-function Stats() {
+
+function Stats({ address }: { address: `0x${string}` }): JSX.Element {
   const [netDeposits, setNetDeposits] = useState("???");
   const [pl, setPl] = useState("???");
   const [balance, setBalance] = useState("???");
-  let { address } = useAccount();
-  if (!address) {
-    address = "0x0000000000000000000000000000000000000000";
-  }
+console.log(address)
   let {
     data: rawBalance,
     isError,
@@ -46,7 +44,7 @@ function Stats() {
       if (!rawBalance) {
         rawBalance = BigNumber.from(0);
       }
-      setBalance(bnFormat(rawBalance));
+
       const encodedAddress = ethers.utils.defaultAbiCoder.encode(["address"], [address]);
 
       // Fetch events
@@ -93,9 +91,14 @@ function Stats() {
 
       setNetDeposits(bnFormat(netDepositsCount));
       setPl(bnFormat(plCount));
+      setBalance(bnFormat(rawBalance));
     }
     if (address !== "0x0000000000000000000000000000000000000000") {
       load();
+    } else {
+      setNetDeposits("???");
+      setPl("???");
+      setBalance("???")
     }
   }, [address]);
 
@@ -111,8 +114,6 @@ function Stats() {
         <h1 className={styles.pl}>P/L: {pl} USDC</h1>
         <PLPercentage balance={balance} netDeposits={netDeposits} />
       </div>
-
-
     </div>
   );
 }
