@@ -112,15 +112,7 @@ function Stats() {
         <PLPercentage balance={balance} netDeposits={netDeposits} />
       </div>
 
-      <center>
-        <a href="https://github.com/xavierdmello/sector_finance_stats">Github</a>
-        <p>
-          Data provided by <a href="https://moonriver.moonscan.io/">Moonriver Moonscan</a>
-        </p>
-        <p>
-          &copy; 2023 Xavier D'Mello <a href="https://twitter.com/nova_holo">@nova_holo</a>
-        </p>
-      </center>
+
     </div>
   );
 }

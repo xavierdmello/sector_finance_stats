@@ -10,6 +10,21 @@ const Home: NextPage = () => {
       <h1>Sector Finance Stats</h1>
       <ConnectButton />
       <Stats />
+
+      <center>
+        <p>
+          Note: If the stats are still showing ??? after connecting your wallet,
+          <br />
+          you are getting rate-limited by Moonscan. Try refreshing the page.{" "}
+        </p>
+        <a href="https://github.com/xavierdmello/sector_finance_stats">Github</a>
+        <p>
+          Data provided by <a href="https://moonriver.moonscan.io/">Moonriver Moonscan</a>
+        </p>
+        <p>
+          &copy; 2023 Xavier D'Mello <a href="https://twitter.com/nova_holo">@nova_holo</a>
+        </p>
+      </center>
     </div>
   );
 };
