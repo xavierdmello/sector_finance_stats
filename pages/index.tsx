@@ -12,18 +12,17 @@ const Home: NextPage = () => {
       <Stats />
 
       <center>
-        <p>
-          Note: If the stats are still showing ??? after connecting your wallet,
-          <br />
-          you are getting rate-limited by Moonscan. Try refreshing the page.{" "}
+        <p className={styles.disclaimer}>
+          Note: If the stats are still showing ??? after connecting your wallet, you are getting rate-limited by Moonscan. Try refreshing the page.{" "}
         </p>
         <a href="https://github.com/xavierdmello/sector_finance_stats">Github</a>
         <p>
           Data provided by <a href="https://moonriver.moonscan.io/">Moonriver Moonscan</a>
         </p>
         <p>
-          &copy; 2023 Xavier D'Mello <a href="https://twitter.com/nova_holo">@nova_holo</a>
+          Have feedback? Send me a message <a href="https://twitter.com/nova_holo">@nova_holo</a>
         </p>
+        <p>&copy; 2023 Xavier D'Mello</p>
       </center>
     </div>
   );
