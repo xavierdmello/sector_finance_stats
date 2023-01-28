@@ -1,0 +1,16 @@
+.formula {
+    font-weight: 100;
+    margin-left: 20px;
+
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.row > h1 {
+    margin: 0;
+}
+
