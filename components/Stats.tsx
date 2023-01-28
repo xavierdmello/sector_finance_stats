@@ -92,7 +92,7 @@ function Stats({ address }: { address: `0x${string}` }): JSX.Element {
       setPl(bnFormat(plCount));
       setBalance(bnFormat(rawBalance));
     }
-    if (address !== "0x0000000000000000000000000000000000000000") {
+    if (address !== "0x0000000000000000000000000000000000000000" && rawBalance) {
       load();
     } else {
       setNetDeposits("???");
