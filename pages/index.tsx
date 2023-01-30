@@ -57,12 +57,12 @@ const Home: NextPage = () => {
         <p className={styles.disclaimer}>
           Note: If the stats are still showing ??? after connecting your wallet, you are getting rate-limited by Moonscan. Try refreshing the page.{" "}
         </p>
-        <a href="https://github.com/xavierdmello/sector_finance_stats" target="_blank">Github</a>
+        <a href="https://github.com/xavierdmello/sector_finance_stats" target="_blank" rel="noopener noreferrer">Github</a>
         <p>
-          Data provided by <a href="https://moonriver.moonscan.io/" target="_blank">Moonriver Moonscan</a>
+          Data provided by <a href="https://moonriver.moonscan.io/" target="_blank" rel="noopener noreferrer">Moonriver Moonscan</a>
         </p>
         <p>
-          Have feedback? Send me a message <a href="https://twitter.com/nova_holo" target="_blank">@nova_holo</a>
+          Have feedback? Send me a message <a href="https://twitter.com/nova_holo" target="_blank" rel="noopener noreferrer">@nova_holo</a>
         </p>
         <p>&copy; 2023 Xavier D'Mello</p>
       </center>
