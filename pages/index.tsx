@@ -37,7 +37,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <a href="https://scion.finance/" target="_blank">https://scion.finance/</a>
+      <a href="https://scion.finance/" target="_blank" rel="noopener noreferrer">https://scion.finance/</a>
       <h1 className={styles.title}>Sector Finance Stats</h1>
       <div className={styles.row}>
         <p className={styles.selectMethodHeader}>Method of choosing account:</p>
