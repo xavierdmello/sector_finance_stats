@@ -37,7 +37,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <a href="https://scion.finance/">https://scion.finance/</a>
+      <a href="https://scion.finance/" target="_blank">https://scion.finance/</a>
       <h1 className={styles.title}>Sector Finance Stats</h1>
       <div className={styles.row}>
         <p className={styles.selectMethodHeader}>Method of choosing account:</p>
@@ -57,12 +57,12 @@ const Home: NextPage = () => {
         <p className={styles.disclaimer}>
           Note: If the stats are still showing ??? after connecting your wallet, you are getting rate-limited by Moonscan. Try refreshing the page.{" "}
         </p>
-        <a href="https://github.com/xavierdmello/sector_finance_stats">Github</a>
+        <a href="https://github.com/xavierdmello/sector_finance_stats" target="_blank">Github</a>
         <p>
-          Data provided by <a href="https://moonriver.moonscan.io/">Moonriver Moonscan</a>
+          Data provided by <a href="https://moonriver.moonscan.io/" target="_blank">Moonriver Moonscan</a>
         </p>
         <p>
-          Have feedback? Send me a message <a href="https://twitter.com/nova_holo">@nova_holo</a>
+          Have feedback? Send me a message <a href="https://twitter.com/nova_holo" target="_blank">@nova_holo</a>
         </p>
         <p>&copy; 2023 Xavier D'Mello</p>
       </center>
