@@ -27,6 +27,9 @@ function Stats({ address }: { address: `0x${string}` }): JSX.Element {
     abi: Vault,
     functionName: "balanceOfUnderlying",
     args: [address],
+    cacheOnBlock: false,
+    cacheTime: 0,
+    staleTime: 0,
   });
 
   function bnFormat(bn: BigNumber) {
