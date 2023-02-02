@@ -1,9 +1,9 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 import { useEffect, useState } from "react";
-import { useAccount, useContractRead } from "wagmi";
+import { useProvider } from "wagmi";
 import styles from "../styles/Stats.module.css";
-import { BigNumber, BytesLike, ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import Vault from "../abi/Vault";
 import PLPercentage from "./PLPercentage";
 
@@ -17,20 +17,7 @@ function Stats({ address }: { address: `0x${string}` }): JSX.Element {
   const [netDeposits, setNetDeposits] = useState("???");
   const [pl, setPl] = useState("???");
   const [balance, setBalance] = useState("???");
-
-  let {
-    data: rawBalance,
-    isError,
-    isLoading,
-  } = useContractRead({
-    address: vault,
-    abi: Vault,
-    functionName: "balanceOfUnderlying",
-    args: [address],
-    cacheOnBlock: false,
-    cacheTime: 0,
-    staleTime: 0,
-  });
+  const provider = useProvider();
 
   function bnFormat(bn: BigNumber) {
     const bnString = bn.toString();
@@ -43,9 +30,8 @@ function Stats({ address }: { address: `0x${string}` }): JSX.Element {
 
   useEffect(() => {
     async function load() {
-      if (!rawBalance) {
-        rawBalance = BigNumber.from(0);
-      }
+      const vaultContract = new ethers.Contract(vault, Vault, provider);
+      const rawBalancePromise = vaultContract.balanceOfUnderlying(address);
 
       const encodedAddress = ethers.utils.defaultAbiCoder.encode(["address"], [address]);
 
@@ -68,7 +54,7 @@ function Stats({ address }: { address: `0x${string}` }): JSX.Element {
 &apikey=${moonscanKey}`);
 
       // Parse events
-      const [depositData, withdrawData] = await Promise.all([depositDataPromise, withdrawDataPromise]);
+      const [depositData, withdrawData, rawBalance] = await Promise.all([depositDataPromise, withdrawDataPromise, rawBalancePromise]);
       let [rawDeposits, rawWithdrawals] = await Promise.all([depositData.json(), withdrawData.json()]);
       rawDeposits = rawDeposits.result;
       rawWithdrawals = rawWithdrawals.result;
@@ -95,7 +81,7 @@ function Stats({ address }: { address: `0x${string}` }): JSX.Element {
       setPl(bnFormat(plCount));
       setBalance(bnFormat(rawBalance));
     }
-    if (address !== "0x0000000000000000000000000000000000000000" && rawBalance) {
+    if (address !== "0x0000000000000000000000000000000000000000") {
       load();
     } else {
       setNetDeposits("???");
